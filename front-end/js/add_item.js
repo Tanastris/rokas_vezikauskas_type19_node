@@ -4,6 +4,8 @@ console.log('add_item.js file was loaded');
 const addItem = document.querySelector('#add_item');
 const itemType = document.querySelector('#item_type_id');
 const navbar = document.querySelector('#navbar');
+const logged = document.querySelector('.logged');
+const notLogged = document.querySelector('.not-logged');
 
 fetch('http://localhost:3000/api/item_types')
   .then((response) => response.json())
@@ -50,6 +52,7 @@ addItem.addEventListener('submit', async (event) => {
 });
 
 if (localStorage.getItem('loggedInUser')) {
+  notLogged.style.display = 'none';
   const logoutButtonLi = document.createElement('li');
   logoutButtonLi.innerHTML = '<a id = "logout_button">Logout</a>';
   logoutButtonLi.addEventListener('click', () => {
@@ -57,4 +60,6 @@ if (localStorage.getItem('loggedInUser')) {
     window.location.href = 'http://127.0.0.1:5500/front-end/login.html';
   });
   navbar.appendChild(logoutButtonLi);
+} else {
+  logged.style.display = 'none';
 }
