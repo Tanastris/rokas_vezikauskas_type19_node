@@ -26,7 +26,7 @@ app.use('/', shopRouter);
 app.use('/', ordersRouter);
 app.use('/', rolesRouter);
 
-testConnection();
+// testConnection();
 // connect
 async function testConnection() {
   let conn;
@@ -43,5 +43,5 @@ async function testConnection() {
 }
 
 app.listen(PORT, () => {
-  console.log(`Server runing on http://localhost:${PORT}`);
+  // console.log(`Server runing on http://localhost:${PORT}`);
 });

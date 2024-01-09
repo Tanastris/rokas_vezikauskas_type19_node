@@ -4,7 +4,7 @@ const dbConfig = {
   password: process.env.DB_PASS,
   database: process.env.DB_DATABASE,
 };
-console.log('dbConfig ===', dbConfig);
+// console.log('dbConfig ===', dbConfig);
 
 module.exports = {
   dbConfig,

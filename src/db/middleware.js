@@ -12,7 +12,7 @@ async function checkNewUser(req, res, next) {
     user_name: Joi.string().min(3).max(30).required(),
     user_password: Joi.string().min(3).required(),
     user_email: Joi.string().email({ minDomainSegments: 2 }).required(),
-    user_role_id: Joi.number().integer().min(1).required(),
+    role_id: Joi.number().integer().min(1).required(),
   });
 
   try {

@@ -22,6 +22,13 @@ loginForm.addEventListener('submit', async (event) => {
     console.warn(data.error);
     return;
   }
-  localStorage.setItem('token', data[0].token);
+  console.log(data);
+  localStorage.setItem(
+    'loggedInUser',
+    JSON.stringify({
+      userLogged: data[0].user_email,
+      userRole: data[0].role_id,
+    })
+  );
   window.location.href = 'http://127.0.0.1:5500/front-end/shop.html';
 });
