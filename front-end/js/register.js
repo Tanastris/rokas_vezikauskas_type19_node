@@ -3,7 +3,7 @@ console.log('register.js file was loaded');
 
 // targets
 const role = document.querySelector('#role');
-const registerForm = document.querySelector('#register-form');
+const addItem = document.querySelector('#register-form');
 
 fetch('http://localhost:3000/api/user_roles')
   .then((response) => response.json())
@@ -21,7 +21,7 @@ fetch('http://localhost:3000/api/user_roles')
     console.error('Error fetching user roles:', error);
   });
 
-registerForm.addEventListener('submit', async (event) => {
+addItem.addEventListener('submit', async (event) => {
   event.preventDefault();
   const name = document.querySelector('#name').value;
   const email = document.querySelector('#email').value;
