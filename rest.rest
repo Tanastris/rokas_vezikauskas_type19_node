@@ -37,3 +37,7 @@ Content-Type: application/json
 ### Get all shop items
 GET http://localhost:3000/api/shop_items
 
+
+### Get shop item by id
+GET http://localhost:3000/api/shop_items/3
+

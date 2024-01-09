@@ -43,6 +43,16 @@ shopRouter.get('/api/shop_items', async (req, res) => {
 });
 
 // 5.3. GET /api/shop_items/:id - gauti parduotuvės prekę pagal id
+shopRouter.get('/api/shop_items/:id', async (req, res) => {
+  const itemId = +req.params.id;
+  const sql = 'SELECT * FROM shop_items WHERE shop_item_id=? AND isDeleted=0';
+  const [rows, error] = await dbQueryWithData(sql, [itemId]);
+  if (error) {
+    res.status(500).json({ error: 'Internal server error' });
+    return;
+  }
+  res.json(rows[0]);
+});
 
 // 5.4. DELETE/api/shop_items/:id - ištrinti parduotuvės prekę pagal id
 
