@@ -1,5 +1,6 @@
 const express = require('express');
 const { dbQueryWithData } = require('../../helper');
+const { checkNewUser, checkLogin } = require('../middleware');
 
 const userRouter = express.Router();
 
@@ -7,7 +8,7 @@ const userRouter = express.Router();
 
 // 4.1. POST /api/auth/register - registruoti vartotoją su name, email, password, role_id
 
-userRouter.post('/api/auth/register', async (req, res) => {
+userRouter.post('/api/auth/register', checkNewUser, async (req, res) => {
   const {
     user_name: name,
     user_email: email,
@@ -26,7 +27,7 @@ userRouter.post('/api/auth/register', async (req, res) => {
 
 // 4.2. POST/api/auth/login - prisijungti vartotoją naudojant email ir password
 
-userRouter.post('/api/auth/login', async (req, res) => {
+userRouter.post('/api/auth/login', checkLogin, async (req, res) => {
   const { user_email: email, user_password: password } = req.body;
   const sql = 'SELECT * FROM users WHERE user_email = ? AND user_password = ?';
   const argArr = [email, password];

@@ -1,5 +1,6 @@
 const express = require('express');
 const { dbQueryWithData } = require('../../helper');
+const { checkNewShopItem } = require('../middleware');
 
 const shopRouter = express.Router();
 
@@ -7,7 +8,7 @@ const shopRouter = express.Router();
 
 // 5.1. POST/api/shop_items - sukurti parduotuvės prekę su name, price, description, image, item_type_id
 
-shopRouter.post('/api/shop_items', async (req, res) => {
+shopRouter.post('/api/shop_items', checkNewShopItem, async (req, res) => {
   const {
     shop_item_name,
     shop_item_price,
@@ -15,8 +16,7 @@ shopRouter.post('/api/shop_items', async (req, res) => {
     shop_item_image,
     item_type_id,
   } = req.body;
-  const sql =
-    'INSERT INTO shop_items (shop_item_name, shop_item_price, shop_item_description, shop_item_image, item_type_id) VALUES (?, ?, ?, ?, ?)';
+  const sql = 'INSERT INTO shop_items (shop_item_name, shop_item_price, shop_item_description, shop_item_image, item_type_id) VALUES (?, ?, ?, ?, ?)';
   const argArr = [
     shop_item_name,
     shop_item_price,
@@ -34,8 +34,7 @@ shopRouter.post('/api/shop_items', async (req, res) => {
 
 // 5.2. GET /api/shop_items - gauti visas parduotuvės prekes
 shopRouter.get('/api/shop_items', async (req, res) => {
-  const sql =
-    'SELECT shop_item_id, shop_item_name, shop_item_price, shop_item_description, shop_item_image, item_type_id FROM shop_items WHERE isDeleted=0';
+  const sql = 'SELECT shop_item_id, shop_item_name, shop_item_price, shop_item_description, shop_item_image, item_type_id FROM shop_items WHERE isDeleted=0';
   const [rows, error] = await dbQueryWithData(sql);
   if (error) {
     res.status(500).json({ error: 'Internal server error' });
