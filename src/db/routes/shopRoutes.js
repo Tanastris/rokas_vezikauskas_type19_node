@@ -32,6 +32,15 @@ shopRouter.post('/api/shop_items', async (req, res) => {
 });
 
 // 5.2. GET /api/shop_items - gauti visas parduotuvės prekes
+shopRouter.get('/api/shop_items', async (req, res) => {
+  const sql = `SELECT shop_item_id, shop_item_name, shop_item_price, shop_item_description, shop_item_image, item_type_id FROM shop_items WHERE isDeleted=0`;
+  const [rows, error] = await dbQueryWithData(sql);
+  if (error) {
+    res.status(500).json({ error: 'Internal server error' });
+    return;
+  }
+  res.json(rows);
+});
 
 // 5.3. GET /api/shop_items/:id - gauti parduotuvės prekę pagal id
 
