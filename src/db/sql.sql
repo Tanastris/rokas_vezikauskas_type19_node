@@ -80,4 +80,24 @@ VALUES
 
 
   -- SQL Query to create 4 item types
-  INSERT INTO `item_types` (`item_type_id`, `item_type_name`) VALUES ('1', 'food'), ('2', 'drink'), ('3', 'electronic'), ('4', 'clothes')
+  INSERT INTO `item_types` 
+  (`item_type_id`, `item_type_name`)
+   VALUES 
+   ('1', 'food'), 
+   ('2', 'drink'), 
+   ('3', 'electronic'), 
+   ('4', 'clothes')
+
+  -- Create 10 orders
+ INSERT INTO orders (user_id, shop_item_id, quantity, total_price, status)
+VALUES 
+  (4, 6, 3, 19.99, 'ready to ship'),
+  (2, 8, 1, 29.99, 'pending'),
+  (1, 3, 2, 39.98, 'processing'),
+  (3, 5, 4, 79.96, 'shipped'),
+  (5, 1, 1, 9.99, 'completed'),
+  (4, 7, 2, 39.98, 'processing'),
+  (2, 10, 3, 59.97, 'ready to ship'),
+  (1, 4, 1, 49.99, 'shipped'),
+  (3, 9, 2, 99.98, 'completed'),
+  (5, 2, 1, 14.99, 'pending');

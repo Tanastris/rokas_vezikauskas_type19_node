@@ -18,6 +18,17 @@ ordersRouter.post('/api/orders', async (req, res) => {
 
 // 7.2. GET /api/orders - gauti visus užsakymus. gauta informacija turi būti su vartojo vardu ir prekės pavadinimu bei vieneto kaina
 
+ordersRouter.get('/api/orders', async (req, res) => {
+  const sql =
+    'SELECT users.user_name, shop_items.shop_item_name, shop_items.shop_item_price FROM users JOIN orders ON users.user_id = orders.user_id JOIN shop_items ON shop_items.shop_item_id = orders.shop_item_id';
+  const [rows, error] = await dbQueryWithData(sql);
+  if (error) {
+    res.status(500).json({ error: 'Internal server error' });
+    return;
+  }
+  res.json(rows);
+});
+
 // 7.3. GET /api/orders/:id - gauti užsakymą pagal id
 
 // 7.4. GET /api/orders/user/user_id-gauti visus užsakymus, priklausančius tam tikram vartotojui. gauta informacija turi būti su vartojo vardu ir prekės pavadinimu bei vieneto kaina

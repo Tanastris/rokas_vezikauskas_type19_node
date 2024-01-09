@@ -51,11 +51,14 @@ POST http://localhost:3000/api/orders
 Content-Type: application/json
 
 {
-  "user_id": 2,
-  "shop_item_id": 4,
+  "user_id": 4,
+  "shop_item_id": 6,
   "quantity": 3,
   "total_price": 19.99,
   "status": "ready to ship"
 }
+
+### Get all orders
+GET http://localhost:3000/api/orders
 
 
