@@ -2,6 +2,7 @@
 console.log('shop.js file was loaded');
 
 const cardsContainer = document.querySelector('.cards-container');
+const navbar = document.querySelector('#navbar');
 
 async function getDataFetch(url) {
   try {
@@ -25,7 +26,7 @@ function makeOneItemCard(pObj) {
   const card = document.createElement('div');
 
   card.classList.add('card');
-  card.innerHTML = `<div id="card${pObj.shop_item_id}" class="card">
+  card.innerHTML = `
   <img
     id="card-img${pObj.shop_item_id}"
     
@@ -38,8 +39,7 @@ function makeOneItemCard(pObj) {
     <p id="card-price" class="card-price">${pObj.shop_item_price}</p>
     <button class="card-button">Add to Cart</button>
     <button class="delete-button">Delete item</button>
-  </div>
-</div>`;
+  </div>`;
   const btnEl = card.querySelector('.delete-button');
   btnEl.addEventListener('click', (event) => {
     deleteItem(event, pObj.shop_item_id);
@@ -129,3 +129,12 @@ function renderItemsList(arr) {
     console.error('Error:', error);
   }
 })();
+if (localStorage.getItem('loggedInUser')) {
+  const logoutButtonLi = document.createElement('li');
+  logoutButtonLi.innerHTML = '<a id = "logout_button">Logout</a>';
+  logoutButtonLi.addEventListener('click', () => {
+    localStorage.removeItem('loggedInUser');
+    window.location.href = 'http://127.0.0.1:5500/front-end/login.html';
+  });
+  navbar.appendChild(logoutButtonLi);
+}

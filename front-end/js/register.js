@@ -4,6 +4,7 @@ console.log('register.js file was loaded');
 // targets
 const role = document.querySelector('#role');
 const addItem = document.querySelector('#register-form');
+const navbar = document.querySelector('#navbar');
 
 fetch('http://localhost:3000/api/user_roles')
   .then((response) => response.json())
@@ -50,3 +51,12 @@ addItem.addEventListener('submit', async (event) => {
     console.warn('Email already exists, please login');
   }
 });
+if (localStorage.getItem('loggedInUser')) {
+  const logoutButtonLi = document.createElement('li');
+  logoutButtonLi.innerHTML = '<a id = "logout_button">Logout</a>';
+  logoutButtonLi.addEventListener('click', () => {
+    localStorage.removeItem('loggedInUser');
+    window.location.href = 'http://127.0.0.1:5500/front-end/login.html';
+  });
+  navbar.appendChild(logoutButtonLi);
+}

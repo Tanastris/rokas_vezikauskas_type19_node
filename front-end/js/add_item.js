@@ -3,6 +3,7 @@ console.log('add_item.js file was loaded');
 
 const addItem = document.querySelector('#add_item');
 const itemType = document.querySelector('#item_type_id');
+const navbar = document.querySelector('#navbar');
 
 fetch('http://localhost:3000/api/item_types')
   .then((response) => response.json())
@@ -19,6 +20,7 @@ fetch('http://localhost:3000/api/item_types')
   .catch((error) => {
     console.error('Error fetching item types:', error);
   });
+
 addItem.addEventListener('submit', async (event) => {
   event.preventDefault();
   const name = document.querySelector('#name').value;
@@ -46,3 +48,13 @@ addItem.addEventListener('submit', async (event) => {
   }
   window.location.href = 'http://127.0.0.1:5500/front-end/shop.html';
 });
+
+if (localStorage.getItem('loggedInUser')) {
+  const logoutButtonLi = document.createElement('li');
+  logoutButtonLi.innerHTML = '<a id = "logout_button">Logout</a>';
+  logoutButtonLi.addEventListener('click', () => {
+    localStorage.removeItem('loggedInUser');
+    window.location.href = 'http://127.0.0.1:5500/front-end/login.html';
+  });
+  navbar.appendChild(logoutButtonLi);
+}
