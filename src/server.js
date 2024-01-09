@@ -7,6 +7,7 @@ const { dbConfig } = require('./config');
 const userRouter = require('./db/routes/userRoutes');
 const shopRouter = require('./db/routes/shopRoutes');
 const ordersRouter = require('./db/routes/ordersRoutes');
+const rolesRouter = require('./db/routes/rolesRoutes');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 app.use('/', userRouter);
 app.use('/', shopRouter);
 app.use('/', ordersRouter);
+app.use('/', rolesRouter);
 
 testConnection();
 // connect

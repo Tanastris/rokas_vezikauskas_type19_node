@@ -101,3 +101,7 @@ VALUES
   (1, 4, 1, 49.99, 'shipped'),
   (3, 9, 2, 99.98, 'completed'),
   (5, 2, 1, 14.99, 'pending');
+
+
+  -- Create 3 user roles
+  INSERT INTO `user_roles` (`user_role_id`, `user_role_name`) VALUES (NULL, 'admin'), (NULL, 'user'), (NULL, 'guest')

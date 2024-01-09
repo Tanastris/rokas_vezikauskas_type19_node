@@ -68,3 +68,6 @@ GET http://localhost:3000/api/orders/10
 
 ### Get all orders by user id
 GET http://localhost:3000/api/orders/user/2
+
+### Get all user roles
+GET http://localhost:3000/api/user_roles
