@@ -55,5 +55,24 @@ shopRouter.get('/api/shop_items/:id', async (req, res) => {
 });
 
 // 5.4. DELETE/api/shop_items/:id - ištrinti parduotuvės prekę pagal id
+shopRouter.delete('/api/shop_items/:id', async (req, res) => {
+  const itemId = +req.params.id;
+  const sql = `
+  UPDATE shop_items
+  SET isDeleted=1
+  WHERE shop_item_id=?
+  LIMIT 1
+  `;
+  const [rows, error] = await dbQueryWithData(sql, [itemId]);
+  if (error) {
+    res.status(500).json({ error: 'Internal server error' });
+    return;
+  }
+  if (rows.affectedRows === 1) {
+    res.json({ msg: 'item deleted' });
+    return;
+  }
+  res.status(400).json(rows);
+});
 
 module.exports = shopRouter;

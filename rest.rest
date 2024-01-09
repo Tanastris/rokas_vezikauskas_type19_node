@@ -41,3 +41,7 @@ GET http://localhost:3000/api/shop_items
 ### Get shop item by id
 GET http://localhost:3000/api/shop_items/3
 
+
+### Delete shop item by id
+DELETE http://localhost:3000/api/shop_items/3
+
