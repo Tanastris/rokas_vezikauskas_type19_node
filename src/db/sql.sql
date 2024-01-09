@@ -77,3 +77,7 @@ VALUES
   ('Professional Chefs Knife', 89.99, 'High-quality chefs knife for precision cutting.', 'chef_knife.jpg', 2),
   ('Designer Sunglasses', 69.99, 'Fashionable sunglasses for a trendy look.', 'sunglasses.jpg', 3),
   ('Artistic Canvas Print', 49.99, 'Beautiful canvas print to enhance your home decor.', 'canvas_print.jpg', 1);
+
+
+  -- SQL Query to create 4 item types
+  INSERT INTO `item_types` (`item_type_id`, `item_type_name`) VALUES ('1', 'food'), ('2', 'drink'), ('3', 'electronic'), ('4', 'clothes')
