@@ -45,3 +45,17 @@ GET http://localhost:3000/api/shop_items/3
 ### Delete shop item by id
 DELETE http://localhost:3000/api/shop_items/3
 
+
+### Create order
+POST http://localhost:3000/api/orders
+Content-Type: application/json
+
+{
+  "user_id": 2,
+  "shop_item_id": 4,
+  "quantity": 3,
+  "total_price": 19.99,
+  "status": "ready to ship"
+}
+
+

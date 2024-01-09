@@ -14,8 +14,7 @@ userRouter.post('/api/auth/register', async (req, res) => {
     user_password: password,
     role_id: roleId,
   } = req.body;
-  const sql =
-    'INSERT INTO users (user_name, user_email, user_password, role_id) VALUES (?, ?, ?, ?)';
+  const sql = 'INSERT INTO users (user_name, user_email, user_password, role_id) VALUES (?, ?, ?, ?)';
   const argArr = [name, email, password, roleId];
   const [rows, error] = await dbQueryWithData(sql, argArr);
   if (error) {

@@ -6,6 +6,7 @@ const mysql = require('mysql2/promise');
 const { dbConfig } = require('./config');
 const userRouter = require('./db/routes/userRoutes');
 const shopRouter = require('./db/routes/shopRoutes');
+const ordersRouter = require('./db/routes/ordersRoutes');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 });
 app.use('/', userRouter);
 app.use('/', shopRouter);
+app.use('/', ordersRouter);
 
 testConnection();
 // connect
