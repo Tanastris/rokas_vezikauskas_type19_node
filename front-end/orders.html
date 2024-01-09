@@ -7,5 +7,19 @@
     <link rel="stylesheet" href="/front-end/style/orders.css" />
     <script src="/front-end/js/orders.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <label for="ordered_by">Ordered by:</label>
+    <select id="ordered_by" name="ordered_by"></select>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Ordered by</th>
+          <th>Item Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody id="table_container"></tbody>
+    </table>
+  </body>
 </html>
